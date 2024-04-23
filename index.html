@@ -224,7 +224,9 @@
       scaffolding.setAccentColor("#ff4c4c");
 
       try {
-        scaffolding.addCloudProvider(new Scaffolding.Cloud.WebSocketProvider(["wss://clouddata.turbowarp.org","wss://clouddata.turbowarp.xyz"], "p4-@frobscottle clicker.sb3"));
+        {const providers = {};
+for (const provider of Object.values(providers)) scaffolding.addCloudProvider(provider);
+};
       } catch (error) {
         console.error(error);
       }
@@ -252,7 +254,7 @@
         getSandboxMode: () => 'unsandboxed',
         canLoadExtensionFromProject: () => true
       });
-      for (const extension of ["https://extensions.turbowarp.org/box2d.js","https://extensions.turbowarp.org/local-storage.js","https://extensions.turbowarp.org/Lily/MoreEvents.js","https://extensions.turbowarp.org/lab/text.js","https://extensions.turbowarp.org/obviousAlexC/penPlus.js"]) {
+      for (const extension of ["https://extensions.turbowarp.org/box2d.js","https://extensions.turbowarp.org/local-storage.js","https://extensions.turbowarp.org/cloudlink.js","https://extensions.turbowarp.org/Lily/MoreEvents.js","https://extensions.turbowarp.org/lab/text.js","https://extensions.turbowarp.org/obviousAlexC/penPlus.js"]) {
         vm.extensionManager.loadExtensionURL(extension);
       }
 
@@ -307,7 +309,7 @@
       await scaffolding.loadProject(projectData);
       setProgress(1);
       loadingScreen.hidden = true;
-      if (false) {
+      if (true) {
         scaffolding.start();
       } else {
         launchScreen.hidden = false;
